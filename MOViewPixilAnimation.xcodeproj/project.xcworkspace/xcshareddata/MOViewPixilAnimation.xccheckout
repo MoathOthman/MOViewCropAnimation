@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>074E6C9F-A876-434A-86D3-6EC5BE1E7986</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MOViewPixilAnimation</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>ED8CB7D6-59E5-44A9-836E-54A3F5CAAFEE</key>
+		<string>https://github.com/MoathOthman/MOViewCropAnimation.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MOViewPixilAnimation.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>ED8CB7D6-59E5-44A9-836E-54A3F5CAAFEE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/MoathOthman/MOViewCropAnimation.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>ED8CB7D6-59E5-44A9-836E-54A3F5CAAFEE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ED8CB7D6-59E5-44A9-836E-54A3F5CAAFEE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MOViewCropAnimation</string>
+		</dict>
+	</array>
+</dict>
+</plist>
