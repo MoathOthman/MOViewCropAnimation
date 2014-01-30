@@ -23,6 +23,9 @@
 		EC4DD4731897EB3200CBAF4C /* MOViewPixilAnimationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4DD4721897EB3200CBAF4C /* MOViewPixilAnimationTests.m */; };
 		EC4DD47D1897ECDA00CBAF4C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4DD47C1897ECDA00CBAF4C /* QuartzCore.framework */; };
 		EC4DD4801897EF5300CBAF4C /* UIView+rect.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4DD47F1897EF5300CBAF4C /* UIView+rect.m */; };
+		ECDAD91918999B5800187A21 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDAD91818999B5800187A21 /* NextViewController.m */; };
+		ECDAD91B18999BCB00187A21 /* BTYiXOF9_7k.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECDAD91A18999BCB00187A21 /* BTYiXOF9_7k.jpg */; };
+		ECDAD91E1899C3A900187A21 /* MOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDAD91D1899C3A900187A21 /* MOImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,11 @@
 		EC4DD47C1897ECDA00CBAF4C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EC4DD47E1897EF5300CBAF4C /* UIView+rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+rect.h"; sourceTree = "<group>"; };
 		EC4DD47F1897EF5300CBAF4C /* UIView+rect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+rect.m"; sourceTree = "<group>"; };
+		ECDAD91718999B5700187A21 /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
+		ECDAD91818999B5800187A21 /* NextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextViewController.m; sourceTree = "<group>"; };
+		ECDAD91A18999BCB00187A21 /* BTYiXOF9_7k.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BTYiXOF9_7k.jpg; sourceTree = "<group>"; };
+		ECDAD91C1899C3A900187A21 /* MOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOImageView.h; sourceTree = "<group>"; };
+		ECDAD91D1899C3A900187A21 /* MOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,7 @@
 		EC4DD44D1897EB3100CBAF4C /* MOViewPixilAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				ECDAD91A18999BCB00187A21 /* BTYiXOF9_7k.jpg */,
 				EC4DD4561897EB3100CBAF4C /* AppDelegate.h */,
 				EC4DD4571897EB3100CBAF4C /* AppDelegate.m */,
 				EC4DD4591897EB3100CBAF4C /* Main.storyboard */,
@@ -126,6 +135,10 @@
 				EC4DD47F1897EF5300CBAF4C /* UIView+rect.m */,
 				EC4DD45C1897EB3100CBAF4C /* ViewController.h */,
 				EC4DD45D1897EB3100CBAF4C /* ViewController.m */,
+				ECDAD91718999B5700187A21 /* NextViewController.h */,
+				ECDAD91818999B5800187A21 /* NextViewController.m */,
+				ECDAD91C1899C3A900187A21 /* MOImageView.h */,
+				ECDAD91D1899C3A900187A21 /* MOImageView.m */,
 				EC4DD45F1897EB3100CBAF4C /* Images.xcassets */,
 				EC4DD44E1897EB3100CBAF4C /* Supporting Files */,
 			);
@@ -238,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC4DD4601897EB3100CBAF4C /* Images.xcassets in Resources */,
+				ECDAD91B18999BCB00187A21 /* BTYiXOF9_7k.jpg in Resources */,
 				EC4DD4521897EB3100CBAF4C /* InfoPlist.strings in Resources */,
 				EC4DD45B1897EB3100CBAF4C /* Main.storyboard in Resources */,
 			);
@@ -258,7 +272,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECDAD91918999B5800187A21 /* NextViewController.m in Sources */,
 				EC4DD45E1897EB3100CBAF4C /* ViewController.m in Sources */,
+				ECDAD91E1899C3A900187A21 /* MOImageView.m in Sources */,
 				EC4DD4581897EB3100CBAF4C /* AppDelegate.m in Sources */,
 				EC4DD4801897EF5300CBAF4C /* UIView+rect.m in Sources */,
 				EC4DD4541897EB3100CBAF4C /* main.m in Sources */,
@@ -470,6 +486,7 @@
 				EC4DD4781897EB3200CBAF4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC4DD4791897EB3200CBAF4C /* Build configuration list for PBXNativeTarget "MOViewPixilAnimationTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +495,7 @@
 				EC4DD47B1897EB3200CBAF4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
