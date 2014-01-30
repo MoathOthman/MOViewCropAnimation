@@ -33,18 +33,18 @@
     
     for (NSNumber*n in chosenIdx) {
         if (n.intValue==idx.intValue) {
-            NSLog(@"number %@ is chosen before",idx);
+       //     NSLog(@"number %@ is chosen before",idx);
             return YES;
         }
     }
-    NSLog(@"number %@ is not  chosen before",idx);
+   // NSLog(@"number %@ is not  chosen before",idx);
 
     return NO;
 }
 - (void)animateimage:(MOImageView *)obj {
-    [UIView animateWithDuration:2.25  animations:^{
+    [UIView animateWithDuration:1.25  animations:^{
        //[obj setYPoint:obj.YPoint+100];
-        NSLog(@"array count %i",ArrayOfImages.count);
+       // NSLog(@"array count %i",ArrayOfImages.count);
         int index=arc4random_uniform(ArrayOfImages.count);
         NSNumber *idx=[NSNumber numberWithInt:index];
         while ([self isitChosenIndex:idx] || [ArrayOfImages indexOfObject:obj]==idx.intValue) {
@@ -53,22 +53,30 @@
         }
         [chosenIdx addObject:idx];
         
-        int cindex =[ArrayOfImages indexOfObject:obj];
-        if (cindex==0) {
-            cindex =1;
-        }else
-        {
-            cindex =cindex-1;
-        }
-        
+   
         MOImageView *chpsenimg=(MOImageView*)[ArrayOfImages objectAtIndex:idx.intValue];
        // obj.frame=[chpsenimg frame];
        
-        float newX =(obj.orX -chpsenimg.orX);
+        float newX =(obj.orX -chpsenimg.orX)-0;
         float newy =obj.orY-chpsenimg.orY;
+        
+        if ([ArrayOfImages indexOfObject:obj]==1110) {
+            float tx=obj.orX;
+            float ty=obj.orY;
+            NSLog(@"tx ,tx %f,%f",tx,ty);
+            obj.XPoint =obj.XPoint-newX;
+            obj.YPoint=obj.YPoint-newy;
+            chpsenimg.XPoint-=newX;
+            chpsenimg.YPoint-=newy;
+        }
         obj.XPoint =obj.XPoint-newX;
         obj.YPoint=obj.YPoint-newy;
-             NSLog(@"new index is %i,cfr %@\n ,,new frame %@",index,NSStringFromCGRect( obj.frame),NSStringFromCGRect( chpsenimg.frame));
+        NSLog(@"new index is %i,cfr %f\n ,,%f,%f ",index, newX,obj.orX ,chpsenimg.orX);
+
+        //chpsenimg.YPoint+=200;
+        
+        
+        //             NSLog(@"new index is %i,cfr %@\n ,,new frame %@",index,NSStringFromCGRect( obj.frame),NSStringFromCGRect( chpsenimg.frame));
 
     }completion:^(BOOL finished) {
         [UIView animateWithDuration:.25 animations:^{
@@ -96,8 +104,9 @@
      ArrayOfImages =[NSMutableArray new] ;
     float xd=30;
     if (isItVertical) {
-        for (float x =0; x<=_viewToAnimate.width; x+=xd) {
-            for (float y =0; y<=_viewToAnimate.height; y+=xd) {
+        for (float x =0; x<_viewToAnimate.width; x+=xd) {
+            for (float y =0; y<_viewToAnimate.height; y+=xd) {
+                NSLog(@"xpoint is %f",x);
                 MOImageView *newImageView =[self imageFromImageView:imageView width:xd height:xd xpoint:x ypoint:y]   ;
 //               NSLog(@"newimage bef is %@",NSStringFromCGRect(newImageView.frame));
                 [newImageView setWidth:_viewToAnimate.width];
@@ -144,7 +153,7 @@
     }];
     
     
-    NSLog(@"chosen images %@ count %i",chosenIdx,chosenIdx.count);
+  //  NSLog(@"chosen images %@ count %i",chosenIdx,chosenIdx.count);
     [_viewToAnimate removeFromSuperview];
     
     
@@ -167,7 +176,11 @@
     UIImage *image =  UIGraphicsGetImageFromCurrentImageContext();
     MOImageView *imv =[[MOImageView alloc]initWithImage:image];
     imv.orX=xpoint;
+  
     imv.orY=ypoint;
+    if (imv.orX==240) {
+        NSLog(@"special frame %@",NSStringFromCGRect(newframe));
+    }
     [imv setFrame:newframe];
     UIGraphicsEndImageContext();
     
