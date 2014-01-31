@@ -94,11 +94,7 @@
         }
     }
 //    _viewToAnimate.hidden=YES;
-    UIImageView *imageView =[[UIImageView alloc]initWithImage:[self convertViewIntoImage]];
-    [imageView setYPoint:1000];
-    [imageView setXPoint:_viewToAnimate.XPoint];
     
-    [self.view addSubview:imageView];
     
      ArrayOfImages =[NSMutableArray new] ;
     float xd=30;
@@ -106,7 +102,7 @@
         for (float x =0; x<_viewToAnimate.width; x+=xd) {
             for (float y =0; y<_viewToAnimate.height; y+=xd) {
                 NSLog(@"xpoint is %f",x);
-                MOImageView *newImageView =[self imageFromImageView:imageView width:xd height:xd xpoint:x ypoint:y]   ;
+                MOImageView *newImageView =[self imageFromImageView:_viewToAnimate width:xd height:xd xpoint:x ypoint:y]   ;
 //               NSLog(@"newimage bef is %@",NSStringFromCGRect(newImageView.frame));
                 [newImageView setWidth:_viewToAnimate.width];
                 [newImageView setHeight:_viewToAnimate.height];
@@ -169,7 +165,9 @@
     // NSLog(@"layer of imageview is %@",NSStringFromCGRect (CGRectMake(xpoint, 0, width, height)));
     CALayer *newLayer = imageView.layer  ;
     // [newLayer setFrame:CGRectMake(xpoint, ypoint, imageView.width, imageView.height)];
-    UIGraphicsBeginImageContext(newSize);
+//    UIGraphicsBeginImageContext(newSize);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
+
     CGContextRef context = UIGraphicsGetCurrentContext();
     //   CGContextRotateCTM(context, 2*M_PI);
     CGRect newframe =CGRectMake(xpoint, ypoint, width, height);
@@ -199,7 +197,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     [_viewToAnimate.layer renderInContext:context];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
+    //UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
     UIGraphicsEndImageContext();
     
     

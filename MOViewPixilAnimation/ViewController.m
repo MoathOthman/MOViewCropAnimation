@@ -123,7 +123,7 @@
    // NSLog(@"layer of imageview is %@",NSStringFromCGRect (CGRectMake(xpoint, 0, width, height)));
     CALayer *newLayer = imageView.layer  ;
    // [newLayer setFrame:CGRectMake(xpoint, ypoint, imageView.width, imageView.height)];
-    UIGraphicsBeginImageContext(newSize);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
  //   CGContextRotateCTM(context, 2*M_PI);
     CGContextClipToRect (UIGraphicsGetCurrentContext(),CGRectMake(xpoint, ypoint, width, height));
