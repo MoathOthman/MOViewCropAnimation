@@ -11,4 +11,5 @@
 @interface MOImageView : UIImageView
 @property(nonatomic,assign)float orX;
 @property(nonatomic,assign)float orY;
+@property(nonatomic,assign)CGRect originalFrame;
 @end

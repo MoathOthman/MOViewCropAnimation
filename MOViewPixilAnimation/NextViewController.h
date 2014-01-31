@@ -14,5 +14,6 @@
 }
 - (IBAction)cropAndShuffle:(id)sender;
 @property (strong, nonatomic) IBOutlet UIImageView *viewToAnimate;
+- (IBAction)revert:(id)sender;
 
 @end

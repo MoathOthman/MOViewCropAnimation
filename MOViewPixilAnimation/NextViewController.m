@@ -11,6 +11,8 @@
 @interface NextViewController ()
 {
     NSMutableArray *chosenIdx;
+    NSMutableArray *chosenImages;
+    NSMutableArray *orImages;
 }
 @end
 
@@ -20,12 +22,15 @@
 {
     [super viewDidLoad];
     chosenIdx=[NSMutableArray new];
+    chosenImages=[NSMutableArray new];
+    orImages =[NSMutableArray new];
 	// Do any additional setup after loading the view.
 }
 
 
 - (IBAction)cropAndShuffle:(id)sender {
-    
+    [ArrayOfImages removeAllObjects];
+    [orImages removeAllObjects];
     [self okLetsHaveFunForXs:YES];
 }
 
@@ -56,23 +61,17 @@
    
         MOImageView *chpsenimg=(MOImageView*)[ArrayOfImages objectAtIndex:idx.intValue];
        // obj.frame=[chpsenimg frame];
-       
+        [chosenImages addObject:chpsenimg];
         float newX =(obj.orX -chpsenimg.orX)-0;
         float newy =obj.orY-chpsenimg.orY;
         
-        if ([ArrayOfImages indexOfObject:obj]==1110) {
-            float tx=obj.orX;
-            float ty=obj.orY;
-            NSLog(@"tx ,tx %f,%f",tx,ty);
-            obj.XPoint =obj.XPoint-newX;
-            obj.YPoint=obj.YPoint-newy;
-            chpsenimg.XPoint-=newX;
-            chpsenimg.YPoint-=newy;
-        }
+       
         obj.XPoint =obj.XPoint-newX;
         obj.YPoint=obj.YPoint-newy;
         NSLog(@"new index is %i,cfr %f\n ,,%f,%f ",index, newX,obj.orX ,chpsenimg.orX);
 
+        
+       // [ArrayOfImages replaceObjectAtIndex:[ArrayOfImages indexOfObject:obj] withObject: chpsenimg ];
         //chpsenimg.YPoint+=200;
         
         
@@ -127,9 +126,12 @@
                 }
                 [newImageView setXPoint:( x-xd*(x/xd) )+ _viewToAnimate.XPoint+newImageView.XPoint-margin*x/xd ];
                 [newImageView setYPoint:( y-xd*(y/xd))+ _viewToAnimate.YPoint+newImageView.YPoint -marginy*y/xd ];
+                newImageView.originalFrame=newImageView.frame;
 //              NSLog(@"newimage frame is %@\n----------",NSStringFromCGRect(newImageView.frame));
                 [self.view addSubview:newImageView];
                 [ArrayOfImages addObject:newImageView];
+                [orImages addObject:newImageView];
+                
             }
             
             //    [newImageView setBackgroundColor:[UIColor blueColor]];
@@ -138,6 +140,7 @@
     }
         
     __block BOOL firstTime=YES;
+    [chosenImages removeAllObjects];
     [ArrayOfImages enumerateObjectsUsingBlock:^(MOImageView* obj, NSUInteger idx, BOOL *stop) {
         
         int count =ArrayOfImages.count;
@@ -205,5 +208,73 @@
 
 
 
+
+- (IBAction)revert:(id)sender {
+    for (UIView*v  in self.view.subviews) {
+        if ([v isKindOfClass:[UIImageView class]]) {
+            [v removeFromSuperview];
+        }
+    }
+    [chosenImages enumerateObjectsUsingBlock:^(MOImageView* obj, NSUInteger idx, BOOL *stop) {
+        
+        
+         //   [self performSelector:@selector(animateimage:) withObject:obj afterDelay:after];
+        [self ranimateimage:obj index:idx];
+        
+        
+        
+    }];
+    
+    
+}
+- (void)ranimateimage:(MOImageView *)obj index:(int)idx {
+    [UIView animateWithDuration:1.25  animations:^{
+        //[obj setYPoint:obj.YPoint+100];
+        // NSLog(@"array count %i",ArrayOfImages.count);
+ 
+        obj.frame=obj.originalFrame;
+        [self.view addSubview:obj];
+        
+//        MOImageView *chpsenimg=(MOImageView*)[ArrayOfImages objectAtIndex:idx];
+//        
+//        NSLog(@"revert ,cObj %@ \n with %@",NSStringFromCGRect(obj.frame),NSStringFromCGRect(chpsenimg.frame));
+//        // obj.frame=[chpsenimg frame];
+//        float newX =(obj.orX -chpsenimg.orX)-0;
+//        float newy =obj.orY-chpsenimg.orY;
+//        
+//        
+//        
+////        obj.XPoint =obj.XPoint-newX;
+////        obj.YPoint=obj.YPoint-newy;
+//        
+//        
+////        obj.XPoint =chpsenimg.XPoint;
+////        obj.YPoint=chpsenimg.YPoint;
+//        [chpsenimg setFrame:obj.frame];
+//        chpsenimg.XPoint=obj.XPoint;
+//        chpsenimg.YPoint=obj.YPoint;
+//        obj.XPoint =chpsenimg.XPoint;
+//        static int count =0;
+//        if (count==chosenImages.count-1) {
+//            count=0;
+//        }
+//        if (count==0) {
+//            obj.YPoint+=10;
+//
+//        }
+//        count++;
+       // [ArrayOfImages replaceObjectAtIndex:[ArrayOfImages indexOfObject:obj] withObject: obj ];
+        //chpsenimg.YPoint+=200;
+        
+        
+        //             NSLog(@"new index is %i,cfr %@\n ,,new frame %@",index,NSStringFromCGRect( obj.frame),NSStringFromCGRect( chpsenimg.frame));
+        
+    }completion:^(BOOL finished) {
+        [UIView animateWithDuration:.25 animations:^{
+            
+            //obj.alpha=0;
+        }];
+    }];
+}
 
 @end
